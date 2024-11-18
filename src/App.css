@@ -17,6 +17,137 @@ nav a {
 }
 nav a.active {
   color: white;
-  background: #333;
+  background: #f2b300;
   text-decoration: none;
+}
+/* App.css */
+
+/* General Reset and Box Model */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and Global Styles */
+body {
+  font-family: 'Roboto', sans-serif; /* Or use Poppins, Open Sans, etc. */
+  background-color: #fff; /* Set the background color */
+  color: #333; /* Default text color */
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Root Container to Center the App */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+/* Navbar styles (if you have one) */
+.navbar {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navbar li {
+  color: white;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Global Button Styles */
+button,
+input[type="submit"] {
+  cursor: pointer;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  background-color: #f2b300;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #f0a500;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Page Container (for each page) */
+.page-container {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styles */
+footer {
+  margin-top: auto;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar a {
+    font-size: 1.1rem;
+  }
+
+  .app-container {
+    padding: 10px;
+  }
+
+  .page-container {
+    padding: 15px;
+  }
+
+  /* Adjust button sizes on small screens */
+  button,
+  input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+  }
 }

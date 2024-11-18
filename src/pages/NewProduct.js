@@ -31,6 +31,7 @@ export default function Create() {
     }
   },[]);
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
     const products = {prodName: prodNameRef.current.value, qty: qtyRef.current.value, description: descriptionRef.current.value,status: statusRef.current.value};
@@ -59,13 +60,15 @@ export default function Create() {
         </label>
         
         <label>
-          <span>Quantity:</span>
-          <input 
-            type="text" 
-            ref={qtyRef}
-            required
-          />
-        </label>
+  <span>Quantity:</span>
+  <input 
+    type="number" 
+    ref={qtyRef}
+    required
+    min="0"  
+    step="1" 
+  />
+</label>
 
         <label>
           <span>Description:</span>

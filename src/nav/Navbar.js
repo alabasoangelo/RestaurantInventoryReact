@@ -15,7 +15,7 @@ export default function Navbar() {
 
     return (
         <nav>
-          <h1>List of Stocks</h1>          
+          <h1>Restaurant Inventory</h1>          
           {user && (
               <>
                   <NavLink to="/">Home</NavLink>
