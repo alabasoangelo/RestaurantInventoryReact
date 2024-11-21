@@ -3,12 +3,13 @@ import {UserContext} from "../context/UserContext";
 import {Navigate, Route, Routes} from "react-router-dom";
 import AdminHome from "../pages/admin_pages/Admin_Home";
 import Login from "../pages/login/Login";
-import ViewInventory from "../pages/View_Inventory";
 import ViewEmployees from "../pages/admin_pages/View_Employees";
 import AddEmployee from "../pages/admin_pages/Add_Employee";
 import Product from "../pages/Product";
 import NewProduct from "../pages/NewProduct";
 import Signup from "../pages/signup/Signup";
+import EditProduct from "../pages/EditProduct";
+import RestockProduct from "../pages/RestockProduct";
 
 export default function NavRoutes() {
     const {user} = useContext(UserContext);
@@ -17,6 +18,8 @@ export default function NavRoutes() {
             <Route path="/admin_home" element={user ? <AdminHome/> : <Login />}/>
             <Route path="/new" element={user ?<NewProduct /> : <Login />}/>
             <Route path="/product/:urlId" element={user ?<Product/> : <Login />}/>
+            <Route path="/edit/:urlId" element={user ?<EditProduct /> : <Login />}/> 
+            <Route path="/restock/:urlId" element={user ?<RestockProduct /> : <Login />}/> 
             <Route path="/view_employees" element={user ?<ViewEmployees />  : <Login />}/>
             <Route path="/add_employee" element={user ?<AddEmployee /> : <Login />}/>
             <Route path="/login" element={<Login />}/>
@@ -25,7 +28,7 @@ export default function NavRoutes() {
 
             {/* Unused */}
             {/* <Route path="/view_inventory" element={user ?<ViewInventory />  : <Login />}/> */}
-            {/* <Route path="/edit/:urlId" element={user ?<NewProduct /> : <Login />}/>  */}
+            
         </Routes>
     );
 }
