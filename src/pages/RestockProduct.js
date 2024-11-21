@@ -82,7 +82,7 @@ export default function RestockProduct() {
 
         <label>
           <span>Status:</span>
-          <select ref={statusRef} disabled>
+          <select ref={statusRef} required>
             <option value="in stock">In Stock</option>
             <option value="need restocking">Need Restocking</option>
             <option value="out of stock">Out of Stock</option>
