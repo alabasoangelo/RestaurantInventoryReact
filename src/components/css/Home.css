@@ -120,6 +120,10 @@ h2 {
 .status.gray {
   color: gray;
 }
+
+.restock{
+  height: 25px;
+}
 @media (max-width: 768px) {
   .product-table th,
   .product-table td {

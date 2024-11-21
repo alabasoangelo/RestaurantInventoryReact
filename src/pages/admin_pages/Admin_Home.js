@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import DeleteIcon from '../../assets/delete.svg';
-import EditIcon from '../../assets/edit.svg';
+import RestockIcon from '../../assets/restock.png';
 // import EditIcon from '../assets/edit.svg';
 
 // styles
@@ -28,6 +28,9 @@ export default function AdminHome() {
     navigate(`/edit/${id}`);
   };
 
+  const handleRestock = async(id) =>{
+    navigate(`/product/${products.id}`);
+  }
   // Filter products based on search query
   const filteredProducts = products?.filter(product =>
     product.prodName.toLowerCase().includes(search.toLowerCase())
@@ -60,7 +63,9 @@ export default function AdminHome() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-
+      <div className='addProduct'>
+          <button>Add Product</button>
+      </div>
       {/* Table for displaying products */}
       <table className="product-table">
         <thead>
@@ -86,7 +91,12 @@ export default function AdminHome() {
                   {product.status}
                 </td>
                 <td className="actions">
-                  <Link to={`/product/${product.id}`}>Restock</Link>
+                <img
+                    className="restock"
+                    onClick={() => handleEdit(product.id)}
+                    src={RestockIcon}
+                    alt="restock icon"
+                  />
                   <img
                     className="icon delete-icon"
                     onClick={() => handleDelete(product.id)}
