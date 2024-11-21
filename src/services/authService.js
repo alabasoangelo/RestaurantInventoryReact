@@ -31,11 +31,11 @@ export const create_user = async (email, username, role, password) => {
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredentials.user 
         await updateProfile(user, { displayName: username })
-        await setDoc(doc(db, "users", user.uid), {
-            email,
-            username,
-            role, // Role can be 'admin' or 'employee'
-        });
+        // await setDoc(doc(db, "users", user.uid), {
+        //     email,
+        //     username,
+        //     role, // Role can be 'admin' or 'employee'
+        // });
 
         return user
 

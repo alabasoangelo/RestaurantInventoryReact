@@ -25,7 +25,7 @@ export default function Signup() {
         usernameRef.current.value,
         roleRef.current.value, 
         passwordRef.current.value)
-      navigate('/login')
+      navigate('/admin_home')
       setIsPending(false)
     }catch(err){
       setError(err.message)
@@ -35,7 +35,7 @@ export default function Signup() {
 
   return (
       <form onSubmit={handleSubmit} className={styles['signup-form']}>
-        <h2>Sign Up</h2>
+        <h2>Create User Account</h2>
         <label>
           <span>E-mail:</span>
           <input
@@ -69,7 +69,7 @@ export default function Signup() {
           />
         </label>
 
-        { !isPending && <button className="btn">Sign up</button> }
+        { !isPending && <button className="btn">Create</button> }
         { isPending && <button className="btn" disabled>loading</button> }
         { error && <p>{error}</p> }
       </form>
