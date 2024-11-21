@@ -103,13 +103,13 @@ export default function AdminHome() {
                     src={DeleteIcon}
                     alt="delete icon"
                   />
-                  {/* Uncomment to enable edit functionality */}
-                  {/* <img
+                  <Link to={`/product/${product.id}`}></Link>
+                  <img
                     className="icon edit-icon"
                     onClick={() => handleEdit(product.id)}
                     src={EditIcon}
-                    alt="edit icon"
-                  /> */}
+                    alt="Edit Product Details"
+                  />
                 </td>
               </tr>
             ))

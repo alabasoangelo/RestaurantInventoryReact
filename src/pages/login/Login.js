@@ -18,7 +18,7 @@ export default function Login() {
     login(email.current.value, password.current.value)
     .then(() => {
         setIsPending(false)
-        navigate('/')
+        navigate('/admin_home')
     })
     .catch((error) => {
       // Handle Errors here.
