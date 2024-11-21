@@ -101,7 +101,7 @@ export default function AdminHome() {
                   {product.status}
                 </td>
                 <td className="actions">
-                <img
+                  <img
                     className="restock"
                     onClick={() => handleEdit(product.id)}
                     src={RestockIcon}
@@ -113,7 +113,6 @@ export default function AdminHome() {
                     src={DeleteIcon}
                     alt="delete icon"
                   />
-                  <Link to={`/product/${product.id}`}></Link>
                   <img
                     className="icon edit-icon"
                     onClick={() => handleEdit(product.id)}
