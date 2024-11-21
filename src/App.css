@@ -4,21 +4,31 @@
 }
 nav {
   display: flex;
-  margin: 0 auto 60px;
+  margin: 20px 30px 30px -40px ;
   gap: 10px;
+  height: 75px;
+  width: 110%;
   align-items: center;
+  background-color: #e3e632;
+  border-radius: 20px;
 }
 nav h1 {
   margin-right: auto;
+  margin-left: 20px;
 }
 nav a {
   color: #333;
   padding: 4px 10px;
+  border-radius: 15%;
 }
 nav a.active {
   color: white;
   background: #f2b300;
   text-decoration: none;
+}
+
+nav button{
+  margin-right: 20px;
 }
 /* App.css */
 
@@ -34,7 +44,7 @@ nav a.active {
 /* Body and Global Styles */
 body {
   font-family: 'Roboto', sans-serif; /* Or use Poppins, Open Sans, etc. */
-  background-color: #fff; /* Set the background color */
+  background-image: url('bg.jpg');
   color: #333; /* Default text color */
   line-height: 1.6;
   overflow-x: hidden;
@@ -104,6 +114,7 @@ a {
 
 a:hover {
   text-decoration: underline;
+  background-color: #f0a500;
 }
 
 /* Page Container (for each page) */

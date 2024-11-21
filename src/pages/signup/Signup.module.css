@@ -1,19 +1,98 @@
+/* Login.module.css */
+
+/* General container styling for the login form */
 .signup-form {
-    max-width: 360px;
-    margin: 60px auto;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background-color: #ffffff; /* White background */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Login form header */
+.signup-form h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #5a2a27; /* Dark restaurant-themed color */
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Input fields styling */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* Focus effect on inputs */
+input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: none;
+}
+
+/* Button styling */
+button.btn {
+  background-color: #5a2a27; /* Dark red restaurant-themed color */
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for button */
+button.btn:hover {
+  background-color: #8c3e32; /* Slightly lighter red for hover */
+}
+
+/* Disabled button styling */
+button.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error message styling */
+p {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Responsive styling for small screens */
+@media (max-width: 768px) {
+  .signup-form {
     padding: 20px;
+    margin: 60px auto;
   }
-  .signup-form label {
-    display: block;
-    margin: 30px auto;
+
+  .signup-form h2 {
+    font-size: 1.5rem;
   }
-  .signup-form span {
-    display: block;
-    margin-bottom: 6px;
+
+  input[type="email"],
+  input[type="password"],
+  button.btn {
+    font-size: 0.9rem;
   }
-  .signup-form input {
-    padding: 8px 6px;
-    font-size: 1em;
-    color: #777;
-    width: 100%;
-  }
+}

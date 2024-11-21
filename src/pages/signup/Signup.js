@@ -1,14 +1,17 @@
 import {useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import {create_user} from "../../services/authService";
+
 // styles
 import styles from './Signup.module.css'
-import {create_user} from "../../services/authService";
 
 export default function Signup() {
   const emailRef = useRef()
+  const usernameRef = useRef()
+  const roleRef = useRef()
   const passwordRef = useRef()
-  const displayNameRef = useRef()
+
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState('')
   const navigate = useNavigate()
@@ -17,8 +20,12 @@ export default function Signup() {
     e.preventDefault()
     setIsPending(true)
     try{
-      await create_user(emailRef.current.value, passwordRef.current.value, displayNameRef.current.value)
-      navigate('/')
+      await create_user(
+        emailRef.current.value,
+        usernameRef.current.value,
+        roleRef.current.value, 
+        passwordRef.current.value)
+      navigate('/admin_home')
       setIsPending(false)
     }catch(err){
       setError(err.message)
@@ -28,29 +35,41 @@ export default function Signup() {
 
   return (
       <form onSubmit={handleSubmit} className={styles['signup-form']}>
-        <h2>sign up</h2>
+        <h2>Create User Account</h2>
         <label>
-          <span>email:</span>
+          <span>E-mail:</span>
           <input
               type="email"
               ref={emailRef}
           />
         </label>
+
         <label>
-          <span>password:</span>
+          <span>Full Name:</span>
+          <input
+              type="text"
+              ref={usernameRef}
+          />
+        </label>
+
+        <label>
+          <span>Role</span>
+          <select ref={roleRef} required>
+            <option value="employee">Employee</option>
+            <option value="manager">Manager</option>
+            <option value="admin">Admin</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Password:</span>
           <input
               type="password"
               ref={passwordRef}
           />
         </label>
-        <label>
-          <span>display name:</span>
-          <input
-              type="text"
-              ref={displayNameRef}
-          />
-        </label>
-        { !isPending && <button className="btn">sign up</button> }
+
+        { !isPending && <button className="btn">Create</button> }
         { isPending && <button className="btn" disabled>loading</button> }
         { error && <p>{error}</p> }
       </form>

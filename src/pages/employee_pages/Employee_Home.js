@@ -1,8 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import DeleteIcon from '../../assets/delete.svg';
 import RestockIcon from '../../assets/restock.png';
-// import EditIcon from '../assets/edit.svg';
 
 // styles
 import '../../components/css/Home.css';
@@ -18,29 +16,6 @@ export default function AdminHome() {
     const unsubscribe = getProducts(setProduct);
     return () => unsubscribe();
   }, []);
-
-  const handleAddProduct = async () => {
-    navigate(`/new`);
-  };
-
-  const handleDelete = async (id) => {
-    // Show confirmation dialog before deletion
-    const isConfirmed = window.confirm('Are you sure you want to delete this product?');
-    
-    if (isConfirmed) {
-      // Proceed with deletion if confirmed
-      await deleteProduct(id);
-      // Optionally, you could show a success message or refresh products list
-      alert('Product deleted successfully!');
-    } else {
-      // Handle cancellation if needed (log or show feedback)
-      console.log('Product deletion canceled');
-    }
-  };
-
-  const handleEdit = async (id) => {
-    navigate(`/edit/${id}`);
-  };
 
   const handleRestock = async(id) =>{
     navigate(`/restock/${id}`);
@@ -78,11 +53,7 @@ export default function AdminHome() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-
-      <div className='addProduct'>
-        <button onClick={() => handleAddProduct()}>Add Product</button>
-      </div>
-
+      
       {/* Table for displaying products */}
       <table className="product-table">
         <thead>
@@ -113,18 +84,6 @@ export default function AdminHome() {
                     onClick={() => handleRestock(product.id)}
                     src={RestockIcon}
                     alt="restock icon"
-                  />
-                  <img
-                    className="icon delete-icon"
-                    onClick={() => handleDelete(product.id)}
-                    src={DeleteIcon}
-                    alt="delete icon"
-                  />
-                  <img
-                    className="icon edit-icon"
-                    onClick={() => handleEdit(product.id)}
-                    src={EditIcon}
-                    alt="Edit Product Details"
                   />
                 </td>
               </tr>

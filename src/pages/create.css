@@ -1,26 +1,126 @@
+/* create.css */
+
+/* General styling for the create/restock product page */
 .create {
-  color: #555;
-  max-width: 480px;
-  margin: 60px auto;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.create label span {
+
+/* Page title styling */
+.page-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #f2b300; 
+}
+
+/* Form label styling */
+label {
   display: block;
-  margin: 30px 0 10px;
+  margin: 15px 0 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
 }
-.create p {
-  margin-top: 10px;
-  font-size: 0.8em;
-}
-.create button {
-  display: block;
-  width: 100px;
-  font-size: 1em;
-  color: #fff;
-  padding: 8px 20px;
-  border: 0;
+
+/* Input field styling */
+input[type="text"], input[type="number"], select {
+  width: 50%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  background-color: #58249c;
-  cursor: pointer;
-  text-decoration: none;
-  margin: 20px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+textarea{
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+/* Styling for read-only (disabled) fields */
+input[disabled], textarea[disabled] {
+  background-color: #f0f0f0;
+  color: #888;
+}
+
+/* Focus effect on input fields */
+input:focus, select:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Restocking quantity input specific */
+input[type="number"] {
+  width: 10%;
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .create {
+    padding: 15px;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"], input[type="number"], select, textarea {
+    font-size: 0.9rem;
+  }
+
+  button.btn {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+/* Add some padding around form elements for visual clarity */
+label span {
+  font-weight: 600;
+  color: #4f4f4f;
+}
+
+textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+/* Styling the product category dropdown */
+select {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+select:focus {
+  border-color: #007bff;
+}
+
+/* Optional: Styling the form container for better alignment */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Status select box styling */
+select {
+  width: 25%;
+  margin-top: 8px;
+}
+
+/* Customize font and make it more modern */
+body {
+  font-family: 'Roboto', sans-serif;
 }
