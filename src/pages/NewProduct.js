@@ -32,7 +32,7 @@ export default function NewProduct() {
       <h2 className="page-title">  Add a New Product </h2>
       <form onSubmit={handleSubmit}>
 
-      <label>
+        <label>
           <span>Product Name:</span>
           <input 
             type="text" 
@@ -42,15 +42,15 @@ export default function NewProduct() {
         </label>
         
         <label>
-  <span>Quantity:</span>
-  <input 
-    type="number" 
-    ref={qtyRef}
-    required
-    min="0"  
-    step="1" 
-  />
-</label>
+          <span>Quantity:</span>
+          <input 
+            type="number" 
+            ref={qtyRef}
+            required
+            min="0"  
+            step="1" 
+          />
+        </label>
 
         <label>
           <span>Description:</span>

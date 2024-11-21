@@ -5,23 +5,42 @@ import { useNavigate } from 'react-router-dom'
 import {logout} from "../services/authService";
 
 export default function Navbar() {
-    const {user} = useContext(UserContext);
+    const {user, userRole, loading} = useContext(UserContext);
     const navigate = useNavigate()
 
     const handleLogout = async () =>  {
-        await logout();
-        navigate('/login')
-      }
+      await logout();
+      navigate('/login')
+    }
 
+    if (loading) {
+      return <p>Loading...</p>; // Show loading indicator while fetching user role
+    }
+    console.log("userRole:", userRole);
     return (
         <nav>
-          <h1>Restaurant Inventory</h1>          
-          {user && (
+          <h1>Restaurant Inventory</h1>        
+          {user &&(
+            <>
+            {userRole === "admin" && (
             <>
               <NavLink to="/admin_home">Inventory</NavLink>
               <NavLink to="/view_employees">Employees</NavLink>
             </>
+            )}
+            </>
           )}
+
+          {user &&(
+            <>
+            {userRole === "employee" && (
+            <>
+              <NavLink to="/employee_home">Inventory</NavLink>
+            </>
+            )}
+            </>
+          )}    
+
           {!user && (
             <>
               <NavLink to="/login">Login</NavLink>
@@ -33,7 +52,7 @@ export default function Navbar() {
 
           {user && (
               <>
-              hello, {user.displayName}
+              Hello, {user.displayName}
               <button className="btn" onClick={handleLogout}>Logout</button>
               </>
           )}
