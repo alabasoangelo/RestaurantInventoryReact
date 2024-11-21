@@ -4,6 +4,7 @@ import {
     setPersistence,
     signInWithEmailAndPassword, updateProfile
 } from "firebase/auth";
+
 import {auth} from "../firebase/config";
 export const login = async (username, password) => {
     try{

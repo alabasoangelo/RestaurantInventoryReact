@@ -24,7 +24,7 @@ export default function Create() {
           descriptionRef.current.value = products.description;
           statusRef.current.value = products.status;
         }else{
-          navigate('/')
+          navigate('/admin_home')
         }
         
       })     
@@ -41,7 +41,7 @@ export default function Create() {
       await addProduct(products)
     }
 
-    navigate('/')
+    navigate('/admin_home')
   } 
 
 

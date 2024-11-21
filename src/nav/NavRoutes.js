@@ -1,10 +1,11 @@
 import React, {useContext} from "react";
 import {UserContext} from "../context/UserContext";
 import {Navigate, Route, Routes} from "react-router-dom";
-import Home from "../pages/Home";
+import AdminHome from "../pages/admin_pages/Admin_Home";
 import Login from "../pages/login/Login";
-import About from "../pages/About";
-import Contact from "../pages/Contact";
+import ViewInventory from "../pages/View_Inventory";
+import ViewEmployees from "../pages/admin_pages/View_Employees";
+import AddEmployee from "../pages/admin_pages/Add_Employee";
 import Product from "../pages/Product";
 import NewProduct from "../pages/NewProduct";
 import Signup from "../pages/signup/Signup";
@@ -13,15 +14,18 @@ export default function NavRoutes() {
     const {user} = useContext(UserContext);
     return (
         <Routes>
-            <Route path="/" element={user ? <Home/> : <Login />}/>
-            <Route path="/about" element={user ?<About /> : <Login />}/>
-            <Route path="/contact" element={user ?<Contact />  : <Login />}/>
-            <Route path="/Product/:urlId" element={user ?<Product/> : <Login />}/>
-            <Route path="/edit/:urlId" element={user ?<NewProduct /> : <Login />}/>
+            <Route path="/admin_home" element={user ? <AdminHome/> : <Login />}/>
             <Route path="/new" element={user ?<NewProduct /> : <Login />}/>
+            <Route path="/product/:urlId" element={user ?<Product/> : <Login />}/>
+            <Route path="/view_employees" element={user ?<ViewEmployees />  : <Login />}/>
+            <Route path="/add_employee" element={user ?<AddEmployee /> : <Login />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<Signup /> }/>
             <Route path="/*" element={<Navigate to="/"/> }/>
+
+            {/* Unused */}
+            {/* <Route path="/view_inventory" element={user ?<ViewInventory />  : <Login />}/> */}
+            {/* <Route path="/edit/:urlId" element={user ?<NewProduct /> : <Login />}/>  */}
         </Routes>
     );
 }
