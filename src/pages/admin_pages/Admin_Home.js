@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import DeleteIcon from '../../assets/delete.svg';
 import RestockIcon from '../../assets/restock.png';
-// import EditIcon from '../assets/edit.svg';
 
 // styles
 import '../../components/css/Home.css';
