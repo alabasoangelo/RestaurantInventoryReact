@@ -9,6 +9,7 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null); // Holds Firebase Auth user object
     const [userRole, setUserRole] = useState(null); // Holds role: 'admin' or 'employee'
+    const [userName, setUsername] = useState(null); // Holds role: 'admin' or 'employee'
     const [loading, setLoading] = useState(true); // To track loading state
 
     useEffect(() => {
@@ -20,6 +21,7 @@ const UserProvider = ({ children }) => {
                     const userDoc = await getDoc(doc(db, "users", user.uid));
                     if (userDoc.exists()) {
                         setUserRole(userDoc.data().role); // Save role in state
+                        setUsername(userDoc.data().username); // Save role in state
                     } else {
                         console.error("No role found for this user.");
                         setUserRole(null);
@@ -39,7 +41,7 @@ const UserProvider = ({ children }) => {
     }, []);
 
     return (
-        <UserContext.Provider value={{ user, userRole, loading }}>
+        <UserContext.Provider value={{ user, userName, userRole, loading }}>
             {children}
         </UserContext.Provider>
     );

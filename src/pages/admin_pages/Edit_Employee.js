@@ -41,7 +41,6 @@ export default function EditEmployee() {
         email: emailRef.current.value,
         username: usernameRef.current.value,
         role: roleRef.current.value, 
-        password: passwordRef.current.value
       };
         await updateEmployee(urlId, userInfo);
 

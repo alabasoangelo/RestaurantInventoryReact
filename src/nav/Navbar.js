@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import {logout} from "../services/authService";
 
 export default function Navbar() {
-    const {user, userRole, loading} = useContext(UserContext);
+    const {user, userName, userRole, loading} = useContext(UserContext);
     const navigate = useNavigate()
 
     const handleLogout = async () =>  {
@@ -54,7 +54,7 @@ export default function Navbar() {
 
           {user && (
               <>
-              Hello, {user.displayName}
+              Hello, {userName}
               <button className="btn" onClick={handleLogout}>Logout</button>
               </>
           )}
