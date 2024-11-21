@@ -4,22 +4,24 @@ import { useNavigate, useParams } from 'react-router-dom';
 import '../create.css';
 import { addEmployee, getEmployee, getEmployees, updateEmployee, setEmployee, deleteEmployee } from "../../services/employeeService";
 
-export default function EditProduct() {
-  const prodNameRef = useRef(null);
-  const qtyRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const statusRef = useRef(null);
+export default function EditEmployee() {
+  const emailRef = useRef(null);
+  const usernameRef = useRef(null);
+  const passwordRef = useRef(null);
+  const roleRef = useRef(null);
   const navigate = useNavigate();
 
   const { urlId } = useParams();
 
   useEffect(() => {
     if (urlId) {
-      getProduct(urlId).then((snapshot) => {
-        const products = snapshot.data();
-        if (products) {
-          prodNameRef.current.value = products.prodName;
-          descriptionRef.current.value = products.description;
+      getEmployee(urlId).then((snapshot) => {
+        const users = snapshot.data();
+        if (users) {
+          emailRef.current.value = users.email;
+          usernameRef.current.value = users.username;
+          roleRef.current.value = users.role;
+          passwordRef.current.value = users.password;
         } else {
           navigate('/admin_home');
         }
@@ -35,19 +37,16 @@ export default function EditProduct() {
 
     if (isConfirmed) {
       // Proceed with form submission if confirmed
-      const products = {
-        prodName: prodNameRef.current.value,
-        description: descriptionRef.current.value,
+      const userInfo = {
+        email: emailRef.current.value,
+        username: usernameRef.current.value,
+        role: roleRef.current.value, 
+        password: passwordRef.current.value
       };
-
-      if (urlId) {
-        await updateProduct(urlId, products);
-      } else {
-        await addProduct(products);
-      }
+        await updateEmployee(urlId, userInfo);
 
       // Navigate to the admin home page after successful submission
-      navigate('/admin_home');
+      navigate('/view_employees');
     } else {
       // If not confirmed, log or handle cancellation if needed
       console.log('Form submission canceled');
@@ -56,24 +55,42 @@ export default function EditProduct() {
 
   return (
     <div className="create">
-      <h2 className="page-title">Edit Product Details</h2>
+      <h2 className="page-title">Edit Employee Details</h2>
       <form onSubmit={handleSubmit}>
         {/* Product Name */}
         <label>
-          <span>Product Name:</span>
+          <span>Email:</span>
           <input
             type="text"
-            ref={prodNameRef}
+            ref={emailRef}
             required
           />
         </label>
 
         {/* Product Description */}
         <label>
-          <span>Description:</span>
-          <textarea
-            ref={descriptionRef}
+          <span>UserName:</span>
+          <input
+            type="text"
+            ref={usernameRef}
             required
+          />
+        </label>
+
+        <label>
+          <span>Role</span>
+          <select ref={roleRef} required>
+            <option value="employee">Employee</option>
+            <option value="manager">Manager</option>
+            <option value="admin">Admin</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Password:</span>
+          <input
+              type="password"
+              ref={passwordRef}
           />
         </label>
 
