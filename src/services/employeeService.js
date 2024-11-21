@@ -1,14 +1,24 @@
 import {addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, updateDoc} from "firebase/firestore";
 import {db} from "../firebase/config";
+import {create_user} from "../services/authService";
 
 const collectionName = 'users'
 
-export const addEmployee = async (users) => {
+export const addEmployee = async (email, username, role, password, mapName) => {
+    create_user(
+        email,
+        username,
+        role, 
+        password
+    )
+
     const ref = collection(db, collectionName)
     try {
-        await addDoc(ref,users)
+        await addDoc(ref, mapName)
+
     }catch (err) {
         throw err
+        
     }
 };
 

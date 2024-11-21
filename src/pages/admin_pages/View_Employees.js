@@ -7,8 +7,6 @@ import { addEmployee, getEmployee, getEmployees, updateEmployee, setEmployee, de
 // styles
 import '../create.css';
 
-
-
 export default function ViewEmployees() {
   const [users, setEmployee] = useState(null);
   const [search, setSearch] = useState('');
