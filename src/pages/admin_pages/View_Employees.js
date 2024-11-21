@@ -1,8 +1,8 @@
-import { useRef, useEffect, useState } from 'react';
-import {  useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import DeleteIcon from '../../assets/delete.svg';
 import EditIcon from '../../assets/edit.svg';
-import { addEmployee, getEmployee, getEmployees, updateEmployee, setEmployee, deleteEmployee } from "../../services/employeeService";
+import { getEmployees, deleteEmployee } from "../../services/employeeService";
 
 // styles
 import '../create.css';
@@ -10,10 +10,7 @@ import '../create.css';
 export default function ViewEmployees() {
   const [users, setEmployee] = useState(null);
   const [search, setSearch] = useState('');
-
   const navigate = useNavigate();
-
-  const { urlId } = useParams();
 
   useEffect(() => {
     const unsubscribe = getEmployees(setEmployee);
@@ -51,11 +48,11 @@ export default function ViewEmployees() {
     // Function to determine the status color
   const getRoleColor = (role) => {
     switch (role) {
-      case 'Employee':
+      case 'employee':
         return 'green';  // green for in stock
-      case 'Manager':
+      case 'manager':
         return 'orange'; // yellow for need restocking
-      case 'Admin':
+      case 'admin':
         return 'red';    // red for out of stock
       default:
         return 'gray';   // default to gray if status is unknown
@@ -109,12 +106,12 @@ export default function ViewEmployees() {
                     src={EditIcon}
                     alt="Edit Product Details"
                   />
-                  <img
+                  {/* <img
                     className="icon delete-icon"
                     onClick={() => handleDelete(users.id)}
                     src={DeleteIcon}
                     alt="delete icon"
-                  />
+                  /> */}
                 </td>
               </tr>
             ))

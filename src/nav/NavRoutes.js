@@ -28,7 +28,7 @@ export default function NavRoutes() {
             <Route path="/restock/:urlId" element={user ?<RestockProduct /> : <Login />}/> 
             <Route path="/view_employees" element={user ?<ViewEmployees />  : <Login />}/>
             <Route path="/add_employee" element={user ?<AddEmployee /> : <Login />}/>
-            <Route path="/edit_employee" element={user ?<EditEmployee /> : <Login />}/>
+            <Route path="/edit_employee/:urlId" element={user ?<EditEmployee /> : <Login />}/>
             <Route path="/*" element={<Navigate to="/"/> }/>
             <Route path="*" element={<div>404 - Page Not Found</div>} />
 

@@ -1,25 +1,27 @@
-import {addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, updateDoc} from "firebase/firestore";
-import {db} from "../firebase/config";
+import { collection, deleteDoc, doc, getDoc, onSnapshot, updateDoc} from "firebase/firestore";
+import { db } from "../firebase/config";
 import {create_user} from "../services/authService";
+
 
 const collectionName = 'users'
 
 export const addEmployee = async (email, username, role, password, mapName) => {
-    create_user(
+    await create_user(
         email,
         username,
         role, 
         password
     )
 
-    const ref = collection(db, collectionName)
-    try {
-        await addDoc(ref, mapName)
+    // Writes the data to the firestore db
+    // const ref = collection(db, collectionName)
+    // try {
+    //     await addDoc(ref, mapName)
 
-    }catch (err) {
-        throw err
-        
-    }
+    // }catch (err) {
+    //     throw err
+
+    // }
 };
 
 export const updateEmployee = async (id, users) => {
@@ -34,9 +36,9 @@ export const updateEmployee = async (id, users) => {
 export const deleteEmployee = async (id, users) => {
     const ref = doc(db, collectionName, id);
     try {
-        await deleteDoc(ref)
+        await deleteDoc(ref);
     }catch (err) {
-        throw err
+        throw err;
     }
 };
 
