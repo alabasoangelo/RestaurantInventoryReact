@@ -1,16 +1,14 @@
-import { useRef, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { addEmployee, updateEmployee } from "../../services/employeeService";
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { addEmployee } from "../../services/employeeService";
 
 export default function AddEmployee() {
-  const emailRef = useRef(null)
+  const emailRef = useRef(null);
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const roleRef = useRef(null);
 
-  const navigate = useNavigate()
-  
-  const { urlId } = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,24 +18,22 @@ export default function AddEmployee() {
       role: roleRef.current.value,
     };
 
-    if(urlId){
-      await updateEmployee(urlId, users)
-
-    }else{
+    try {
       await addEmployee(
         emailRef.current.value, 
         usernameRef.current.value,
         roleRef.current.value,
         passwordRef.current.value,
         users
-        
-      )
+      );
+      
+      navigate('/admin_home');
+
+    } catch (error) {
+      throw error;
+
     }
-
-    navigate('/admin_home')
-
   } 
-
 
   return (
     <div className="create">
@@ -79,7 +75,7 @@ export default function AddEmployee() {
           />
         </label>
 
-        <button className="btn">submit</button>
+        <button className="btn">Submit</button>
       </form>
     </div>
   )
