@@ -33,8 +33,9 @@ export default function AdminHome() {
   };
 
   const handleRestock = async(id) =>{
-    navigate(`/product/${products.id}`);
+    navigate(`/restock/${id}`);
   }
+  
   // Filter products based on search query
   const filteredProducts = products?.filter(product =>
     product.prodName.toLowerCase().includes(search.toLowerCase())
@@ -103,7 +104,7 @@ export default function AdminHome() {
                 <td className="actions">
                   <img
                     className="restock"
-                    onClick={() => handleEdit(product.id)}
+                    onClick={() => handleRestock(product.id)}
                     src={RestockIcon}
                     alt="restock icon"
                   />
