@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import DeleteIcon from '../../assets/delete.svg';
 import RestockIcon from '../../assets/restock.png';
-// import EditIcon from '../assets/edit.svg';
+import EditIcon from '../../assets/edit.svg';
 
 // styles
 import '../../components/css/Home.css';
@@ -88,7 +88,7 @@ export default function AdminHome() {
         <thead>
           <tr>
             <th>Product Name</th>
-            <th>Quantity</th>
+            <th>Quantity(Per box)</th>
             <th>Description</th>
             <th>Status</th>
             <th>Actions</th>
