@@ -63,8 +63,8 @@ export default function AdminHome() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className='addEmployee'>
-          <button>Add Employee</button>
+      <div className='addProduct'>
+          <button>Add Product</button>
       </div>
       {/* Table for displaying products */}
       <table className="product-table">
