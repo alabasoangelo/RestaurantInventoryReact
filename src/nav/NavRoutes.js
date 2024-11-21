@@ -15,6 +15,9 @@ export default function NavRoutes() {
     const {user} = useContext(UserContext);
     return (
         <Routes>
+            <Route path="/" element={<Navigate to="/login"/> }/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/signup" element={<Signup /> }/>
             <Route path="/admin_home" element={user ? <AdminHome/> : <Login />}/>
             <Route path="/new" element={user ?<NewProduct /> : <Login />}/>
             <Route path="/product/:urlId" element={user ?<Product/> : <Login />}/>
@@ -22,9 +25,8 @@ export default function NavRoutes() {
             <Route path="/restock/:urlId" element={user ?<RestockProduct /> : <Login />}/> 
             <Route path="/view_employees" element={user ?<ViewEmployees />  : <Login />}/>
             <Route path="/add_employee" element={user ?<AddEmployee /> : <Login />}/>
-            <Route path="/login" element={<Login />}/>
-            <Route path="/signup" element={<Signup /> }/>
             <Route path="/*" element={<Navigate to="/"/> }/>
+            <Route path="*" element={<div>404 - Page Not Found</div>} />
 
             {/* Unused */}
             {/* <Route path="/view_inventory" element={user ?<ViewInventory />  : <Login />}/> */}

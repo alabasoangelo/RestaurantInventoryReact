@@ -42,10 +42,10 @@ export default function AdminHome() {
     navigate(`/edit/${id}`);
   };
 
-  const handleRestock = async (id) => {
-    navigate(`/Restock/${id}`);
-  };
-
+  const handleRestock = async(id) =>{
+    navigate(`/restock/${id}`);
+  }
+  
   // Filter products based on search query
   const filteredProducts = products?.filter(product =>
     product.prodName.toLowerCase().includes(search.toLowerCase())
