@@ -6,10 +6,11 @@ export default function Product() {
   const navigate = useNavigate();
   const { urlId } = useParams()
   const [products, setProduct] = useState(null);
-  
+
   const handleEdit = async (id) => {
-    navigate(`/edit/${urlId}`);
+    navigate(`/restock/${urlId}`);
   };
+  
   useEffect(() => {
     getProduct(urlId)
       .then((snapshot)=>{        

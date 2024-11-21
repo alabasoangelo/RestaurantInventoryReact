@@ -17,20 +17,18 @@ export default function Navbar() {
         <nav>
           <h1>Restaurant Inventory</h1>          
           {user && (
-              <>
-                  <NavLink to="/admin_home">Home</NavLink>
-                  {/* <NavLink to="/view_inventory">View Inventory</NavLink> */}
-                  <NavLink to="/new">New Product</NavLink>
-                  <NavLink to="/view_employees">View Employees</NavLink>
-                  <NavLink to="/add_employee">Add Employee</NavLink>
-                  
-                  
-              </>
+            <>
+              <NavLink to="/admin_home">Home</NavLink>
+              {/* <NavLink to="/view_inventory">View Inventory</NavLink> */}
+              <NavLink to="/new">New Product</NavLink>
+              <NavLink to="/view_employees">View Employees</NavLink>
+              <NavLink to="/add_employee">Add Employee</NavLink>
+            </>
           )}
           {!user && (
             <>
-            <NavLink to="/login">Login</NavLink>
-            <NavLink to="/signup">Signup</NavLink>
+              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/signup">Signup</NavLink>
             </>
           )
           

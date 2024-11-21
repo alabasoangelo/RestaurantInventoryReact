@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './create.css'
 import {addProduct, getProduct, updateProduct} from "../services/productService";
 
-export default function Create() {
+export default function NewProduct() {
   
   const prodNameRef = useRef(null);
   const qtyRef = useRef(null);
@@ -14,24 +14,6 @@ export default function Create() {
   
   const { urlId } = useParams();
 
-  useEffect(() => {
-    if(urlId){
-      getProduct(urlId).then((snapshot)=>{
-        const products = snapshot.data();
-        if(products){
-          prodNameRef.current.value = products.prodName;
-          qtyRef.current.value = products.title;
-          descriptionRef.current.value = products.description;
-          statusRef.current.value = products.status;
-        }else{
-          navigate('/admin_home')
-        }
-        
-      })     
-    }
-  },[]);
-
-  
   const handleSubmit = async (e) => {
     e.preventDefault()
     const products = {prodName: prodNameRef.current.value, qty: qtyRef.current.value, description: descriptionRef.current.value,status: statusRef.current.value};
