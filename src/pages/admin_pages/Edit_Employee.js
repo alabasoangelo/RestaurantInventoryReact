@@ -1,12 +1,10 @@
 import { useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
 // styles
-import './create.css';
-import { addProduct, getProduct, updateProduct } from "../services/productService";
+import '../create.css';
+import { addEmployee, getEmployee, getEmployees, updateEmployee, setEmployee, deleteEmployee } from "../../services/employeeService";
 
-export default function RestockProduct() {
-  
+export default function EditProduct() {
   const prodNameRef = useRef(null);
   const qtyRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -21,9 +19,7 @@ export default function RestockProduct() {
         const products = snapshot.data();
         if (products) {
           prodNameRef.current.value = products.prodName;
-          qtyRef.current.value = products.qty;
           descriptionRef.current.value = products.description;
-          statusRef.current.value = products.status;
         } else {
           navigate('/admin_home');
         }
@@ -35,15 +31,13 @@ export default function RestockProduct() {
     e.preventDefault();
 
     // Show confirmation dialog before submitting
-    const isConfirmed = window.confirm('Are you sure you want to restock this product?');
+    const isConfirmed = window.confirm('Are you sure you want to submit this form?');
 
     if (isConfirmed) {
       // Proceed with form submission if confirmed
       const products = {
         prodName: prodNameRef.current.value,
-        qty: qtyRef.current.value,
         description: descriptionRef.current.value,
-        status: statusRef.current.value,
       };
 
       if (urlId) {
@@ -56,54 +50,34 @@ export default function RestockProduct() {
       navigate('/admin_home');
     } else {
       // If not confirmed, log or handle cancellation if needed
-      console.log('Restock action canceled');
+      console.log('Form submission canceled');
     }
   };
 
   return (
     <div className="create">
-      <h2 className="page-title">Restock Product</h2>
+      <h2 className="page-title">Edit Product Details</h2>
       <form onSubmit={handleSubmit}>
+        {/* Product Name */}
         <label>
           <span>Product Name:</span>
           <input
             type="text"
             ref={prodNameRef}
-            readOnly
-            disabled
-          />
-        </label>
-        
-        <label>
-          <span>Quantity:</span>
-          <input
-            type="number"
-            ref={qtyRef}
             required
-            min="0"
-            step="1"
           />
         </label>
 
+        {/* Product Description */}
         <label>
           <span>Description:</span>
           <textarea
             ref={descriptionRef}
-            readOnly
-            disabled
+            required
           />
         </label>
 
-        <label>
-          <span>Status:</span>
-          <select ref={statusRef} required>
-            <option value="in stock">In Stock</option>
-            <option value="need restocking">Need Restocking</option>
-            <option value="out of stock">Out of Stock</option>
-          </select>
-        </label>
-
-        <button className="btn">SUBMIT</button>
+        <button className="btn">Submit</button>
       </form>
     </div>
   );

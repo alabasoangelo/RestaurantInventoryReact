@@ -5,6 +5,8 @@ import NavRoutes from './nav/NavRoutes'
 import {UserProvider} from './context/UserContext';
 
 function App() {
+  const userRole = "";
+  
   return (
     <UserProvider>
       <div className="App">
