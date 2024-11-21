@@ -9,7 +9,6 @@ import '../../components/css/Home.css';
 import { deleteProduct, getProducts } from "../../services/productService";
 
 export default function AdminHome() {
-  
   const [products, setProduct] = useState(null);
   const [search, setSearch] = useState('');
 
@@ -20,12 +19,23 @@ export default function AdminHome() {
     return () => unsubscribe();
   }, []);
 
-  const handleAddProduct = async =>{
+  const handleAddProduct = async () => {
     navigate(`/new`);
   };
 
   const handleDelete = async (id) => {
-    await deleteProduct(id);
+    // Show confirmation dialog before deletion
+    const isConfirmed = window.confirm('Are you sure you want to delete this product?');
+    
+    if (isConfirmed) {
+      // Proceed with deletion if confirmed
+      await deleteProduct(id);
+      // Optionally, you could show a success message or refresh products list
+      alert('Product deleted successfully!');
+    } else {
+      // Handle cancellation if needed (log or show feedback)
+      console.log('Product deletion canceled');
+    }
   };
 
   const handleEdit = async (id) => {
@@ -70,13 +80,9 @@ export default function AdminHome() {
       </div>
 
       <div className='addProduct'>
-          <button
-            onClick={() => handleAddProduct()}
-          >
-            Add Product
-          </button>
-
+        <button onClick={() => handleAddProduct()}>Add Product</button>
       </div>
+
       {/* Table for displaying products */}
       <table className="product-table">
         <thead>
@@ -90,20 +96,20 @@ export default function AdminHome() {
         </thead>
         <tbody>
           {filteredProducts && filteredProducts.length > 0 ? (
-            filteredProducts.map(product => (
+            filteredProducts.map((product) => (
               <tr key={product.id}>
                 <td>{product.prodName}</td>
                 <td>{product.qty}</td>
                 <td>{product.description}</td>
-                <td 
-                  className="status" 
+                <td
+                  className="status"
                   style={{ color: getStatusColor(product.status) }}
                 >
                   {product.status}
                 </td>
                 <td className="actions">
                   <img
-                    className="restock"
+                    className="icon restock-icon"
                     onClick={() => handleRestock(product.id)}
                     src={RestockIcon}
                     alt="restock icon"
@@ -131,5 +137,5 @@ export default function AdminHome() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }

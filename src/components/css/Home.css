@@ -121,8 +121,14 @@ h2 {
   color: gray;
 }
 
-.restock{
+.restock-icon{
   height: 25px;
+  width: 25px;
+  transition: transform 0.3s ease;
+}
+
+.restock-icon:hover {
+  transform: scale(1.2);
 }
 @media (max-width: 768px) {
   .product-table th,
