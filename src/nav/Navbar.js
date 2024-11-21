@@ -44,7 +44,9 @@ export default function Navbar() {
           {!user && (
             <>
               <NavLink to="/login">Login</NavLink>
-              <NavLink to="/signup">Signup</NavLink>
+
+              {/* Function was moved to Admin Dashboard Employees Page */}
+              {/* <NavLink to="/signup">Signup</NavLink> */}
             </>
           )
           

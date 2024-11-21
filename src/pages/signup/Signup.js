@@ -56,7 +56,6 @@ export default function Signup() {
           <span>Role</span>
           <select ref={roleRef} required>
             <option value="employee">Employee</option>
-            <option value="manager">Manager</option>
             <option value="admin">Admin</option>
           </select>
         </label>
